@@ -112,7 +112,7 @@
                             <!- CONFIGURAR BOTÃO BAIBAMAIS-->
                                 <!-- <button id="btn-saibamais" class="btn btn-block btn-sm" type="button"><i class="bi bi-info-circle" onclick="imovelJs.imovelInfo('<?= $dataI[0] ?>')"></i></button><br> -->
                                 <!-- Button trigger modal -->
-                                <button type="button" id="btn-agendar" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="agendamentoJs.agendaImovel(<?= $dataI[0] ?>);">
+                                <button type="button" id="btn-agendar" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="agendamentoJs.agendaImovel(<?= $dataI[0] ?>); loadCalendar();">
                                     AGENDAR VISITA
                                 </button>
 

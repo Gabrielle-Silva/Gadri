@@ -144,7 +144,7 @@ include_once(__ABS_DIR__ . 'src/view/includes/nav.php');
         }, 10000);
       </script>
       <?php if (isset($_SESSION['login']) && $_SESSION['perfil'] == 'a') { ?>
-        <button id="btn-edit" class="btn btn-block btn-sm btn-edit" type="button"><i class="bi bi-pencil-square" onclick="imovelJs.editarImovel(<?= $arrImoveis[0][0] ?>)"></i></i></button>
+        <button id="btn-edit" class="btn btn-block btn-sm btn-edit" type="button"><i class="bi bi-pencil-square" onclick="imovelJs.editarImovel(<?= $dataI[0] ?>)"></i></i></button>
         <?php
       } else if (isset($_SESSION['login']) && $_SESSION['perfil'] == 'u') {
         $queryFavoritos = "select cod_imovel from favorito where cod_usuario = " . $_SESSION['login'];

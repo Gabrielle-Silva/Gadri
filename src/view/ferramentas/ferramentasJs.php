@@ -38,6 +38,28 @@
             });
         },
 
+        listarFinalidade: function() {
+
+$.ajax({
+    url: '/src/controller/finalidadeController.php?action=listar',
+
+}).done(function(dados) {
+    $('#layoutSidenav_content').html(dados);
+
+});
+},
+
+listarTipo: function() {
+
+$.ajax({
+    url: '/src/controller/tipoController.php?action=listar',
+
+}).done(function(dados) {
+    $('#layoutSidenav_content').html(dados);
+
+});
+},
+
         //========================CRIAR=======================================
 
         criarBairro: function() {
@@ -104,6 +126,72 @@
             });
         },
 
+        criarHorario: function() {
+            var descricao = $('#descricao').val();
+            var horario = $('#horario').val();
+            var ativo = $('#ativo').val();
+            $.ajax({
+                url: '/src/controller/horarioController.php?action=inserir',
+                'method': 'post',
+                'data': {
+
+                    'descricao': descricao,
+                    'horario': horario,
+                    'ativo': ativo
+                }
+
+
+
+            }).done(function(dados) {
+                $('#layoutSidenav_content').html(dados);
+                $('#myModal').modal('show');
+
+            });
+        },
+
+        criarFinalidade: function() {
+            var descricao = $('#descricao').val();
+        
+            $.ajax({
+                url: '/src/controller/finalidadeController.php?action=inserir',
+                'method': 'post',
+                'data': {
+
+                    'descricao': descricao,
+                    
+                }
+
+
+
+            }).done(function(dados) {
+                $('#layoutSidenav_content').html(dados);
+                $('#myModal').modal('show');
+
+            });
+        },
+
+        
+        criarTipo: function() {
+            var descricao = $('#descricao').val();
+        
+            $.ajax({
+                url: '/src/controller/tipoController.php?action=inserir',
+                'method': 'post',
+                'data': {
+
+                    'descricao': descricao,
+                    
+                }
+
+
+
+            }).done(function(dados) {
+                $('#layoutSidenav_content').html(dados);
+                $('#myModal').modal('show');
+
+            });
+        },
+
         //========================ATUALIZAR=======================================
 
         atualizarBairro: function(id) {
@@ -147,6 +235,7 @@
             }
         },
 
+       
         atualizarHorario: function(id) {
             var descricao = $(`#descricao${id}`).val();
             var horario = $(`#horario${id}`).val();
@@ -160,6 +249,41 @@
                         'descricao': descricao,
                         'horario': horario,
                         'ativo': ativo
+                    }
+                }).done(function(dados) {
+                    $('#layoutSidenav_content').html(dados);
+                    $('#myModal').modal('show');
+                });
+            }
+        },
+        atualizarFinalidade: function(id) {
+            var descricao = $(`#descricao${id}`).val();
+            if (confirm("Deseja atualizar a finalidade?")) {
+                $.ajax({
+                    url: '/src/controller/finalidadeController.php?action=atualizar',
+
+                    'data': {
+                        'cod': id,
+                        'descricao': descricao,
+                        
+                    }
+                }).done(function(dados) {
+                    $('#layoutSidenav_content').html(dados);
+                    $('#myModal').modal('show');
+                });
+            }
+        },
+
+        atualizarTipo: function(id) {
+            var descricao = $(`#descricao${id}`).val();
+            if (confirm("Deseja atualizar o tipo de imovel?")) {
+                $.ajax({
+                    url: '/src/controller/tipoController.php?action=atualizar',
+
+                    'data': {
+                        'cod': id,
+                        'descricao': descricao,
+                        
                     }
                 }).done(function(dados) {
                     $('#layoutSidenav_content').html(dados);
@@ -199,10 +323,11 @@
             }
         },
 
-        excluirCidade: function(id) {
-            if (confirm("Deseja excluir a cidade?")) {
+    
+        excluirHorario: function(id) {
+            if (confirm("Deseja excluir este horario?")) {
                 $.ajax({
-                    url: '/src/controller/cidadeController.php?action=excluir',
+                    url: '/src/controller/horarioController.php?action=excluir',
 
                     'data': {
                         'cod': id
@@ -213,12 +338,24 @@
                 });
             }
         },
-
-
-        excluirHorario: function(id) {
-            if (confirm("Deseja excluir este horario?")) {
+        excluirFinalidade: function(id) {
+            if (confirm("Deseja excluir a finalidade?")) {
                 $.ajax({
-                    url: '/src/controller/horarioController.php?action=excluir',
+                    url: '/src/controller/finalidadeController.php?action=excluir',
+
+                    'data': {
+                        'cod': id
+                    }
+                }).done(function(dados) {
+                    $('#layoutSidenav_content').html(dados);
+                    $('#myModal').modal('show');
+                });
+            }
+        },
+        excluirTipo: function(id) {
+            if (confirm("Deseja excluir o tipo de imóvel?")) {
+                $.ajax({
+                    url: '/src/controller/tipoController.php?action=excluir',
 
                     'data': {
                         'cod': id
@@ -320,6 +457,53 @@
 
         },
 
+        //========================BOTÃO EDITAR/CANCELAR FINALIDADE=======================================
+        
+        editarFinalidade: function(id, descricao) {
+
+
+$("#finalidadeList" + id).html(`	
+<td><input id="descricao${id}" name="descricao" type="text" value="${descricao}"></td>
+<td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.atualizarFinalidade(${id})">SALVAR</button></td> 
+<td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.cancelaEditarFinalidade(${id}, '${descricao}')" >CANCELAR</button></td>`);
+
+
+},
+
+cancelaEditarFinalidade: function(id, descricao) {
+
+$("#finalidadeList" + id).html(`<td>${descricao}</td> <td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.editarFinalidade(${id}, '${descricao}')">EDITAR</button></td> <td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.excluirFinalidade(${id})">EXCLUIR</button></td>`);
+
+
+},
+limparFinalidade: function() {
+$('#descricao').val('');
+
+},
+//========================BOTÃO EDITAR/CANCELAR TIPO=======================================
+        
+editarTipo: function(id, descricao) {
+
+
+$("#tipoList" + id).html(`	
+<td><input id="descricao${id}" name="descricao" type="text" value="${descricao}"></td>
+<td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.atualizarTipo(${id})">SALVAR</button></td> 
+<td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.cancelaEditarTipo(${id}, '${descricao}')" >CANCELAR</button></td>`);
+
+
+},
+
+cancelaEditarTipo: function(id, descricao) {
+
+$("#tipoList" + id).html(`<td>${descricao}</td> <td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.editarTipo(${id}, '${descricao}')">EDITAR</button></td> <td><button type="button" class="btn btn-secondary btn-block" onclick="ferramentasJs.excluirTipo(${id})">EXCLUIR</button></td>`);
+
+
+},
+limparTipo: function() {
+$('#descricao').val('');
+
+},
 
     });
+
 </script>

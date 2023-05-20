@@ -59,17 +59,17 @@ if (!isset($_SESSION['login']) or ($_SESSION['perfil'] != 'a')) {
 
 
 
-                        <a class="nav-link" href="javascript:void(0)" onclick="callPage('/src/view/ferramentas/tipoFinalidadeList')">
+                        <a class="nav-link" href="javascript:void(0)" onclick="ferramentasJs.listarFinalidade();">
                             <div class="sb-nav-link-icon"></i></div>
-                            Gerenciar tipos e finalidades
+                            Tipos e finalidades
                         </a>
                         <a class="nav-link" href="javascript:void(0)" onclick="ferramentasJs.listarHorario(); ">
                             <div class="sb-nav-link-icon"></i></div>
-                            Gerenciar horarios
+                            Horarios
                         </a>
                         <a class="nav-link" href="javascript:void(0)" onclick="ferramentasJs.listarCidade(); ">
                             <div class="sb-nav-link-icon"></i></div>
-                            Gerenciar cidades
+                            Cidades e Bairros
                         </a>
                         <!-- <a class="nav-link" href="javascript:void(0)" onclick="ferramentasJs.listarBairro(); ">
                             <div class="sb-nav-link-icon"></i></div>

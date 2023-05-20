@@ -20,8 +20,9 @@
                     'obs': $('#obs').val(),
                 }
             }).done(function(dados) {
-                $('html').html(dados);
+                $('htmlayoutSidenav_contentl').html(dados);
                 $('#myModal').modal('show');
+                alert('Pedido de agendamento realizado!\nVerifique seu email ou em "Agendamentos" no seu perfil');
                 //window.location.href = `/src/view/painel/painelBuscaImoveis.php?`
             });
 

@@ -240,8 +240,9 @@ class agendamentoModel
                 $sql .= " and cod_imovel = " . $this->cod_imovel;
             }
 
-            $resultUsuarios = mysqli_query($conexao, $sql);
-            return mysqli_fetch_all($resultUsuarios);
+            $resultAgendamento = mysqli_query($conexao, $sql);
+
+            return mysqli_fetch_all($resultAgendamento);
         } catch (\Throwable $th) {
             //throw $th;
         }

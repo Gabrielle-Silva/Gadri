@@ -10,7 +10,7 @@
 
 		pesquisar: function() {
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?action=listar',
+				url: '/src/controller/usuarioController.php?action=listar',
 
 			}).done(function(dados) {
 				$('#layoutSidenav_content').html(dados);
@@ -20,7 +20,7 @@
 
 		sessao: function() {
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?',
+				url: '/src/controller/usuarioController.php?',
 				'method': 'post',
 				'data': $(`#loginForm`).serialize()
 			}).done(function(dados) {
@@ -33,7 +33,7 @@
 		inserir: function() {
 
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?action=inserir',
+				url: '/src/controller/usuarioController.php?action=inserir',
 				'method': 'post',
 				'data': $(`#criaContaForm`).serialize()
 			}).done(function(dados) {
@@ -47,7 +47,7 @@
 		atualizar: function(id) {
 
 			$.ajax({
-				'url': '/src/controller/UsuarioController.php?action=atualizar',
+				'url': '/src/controller/usuarioController.php?action=atualizar',
 
 				'data': {
 					'cod': id
@@ -62,7 +62,7 @@
 		editar: function(id) {
 			if (confirm("Deseja atualizar os dados?")) {
 				$.ajax({
-					url: '/src/Controller/UsuarioController.php?',
+					url: '/src/Controller/usuarioController.php?',
 
 					'cod': id,
 					'data': $(`#usuarioForm`).serialize(),
@@ -83,7 +83,7 @@
 
 			if (confirm('Deseja excluir a conta?')) {
 				$.ajax({
-					'url': '/src/controller/UsuarioController.php?action=apagar',
+					'url': '/src/controller/usuarioController.php?action=apagar',
 					'data': {
 						'cod': id
 					}
@@ -100,7 +100,7 @@
 
 		salvar: function() {
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?',
+				url: '/src/controller/usuarioController.php?',
 				'method': 'post',
 				'data': $(`#cadastroForm`).serialize()
 			}).done(function(dados) {
@@ -115,7 +115,7 @@
 		criar: function() {
 
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?action=criar',
+				url: '/src/controller/usuarioController.php?action=criar',
 
 			}).done(function(dados) {
 
@@ -127,7 +127,7 @@
 		login: function() {
 
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?action=login',
+				url: '/src/controller/usuarioController.php?action=login',
 
 			}).done(function(dados) {
 
@@ -139,7 +139,7 @@
 		esqueciS: function() {
 
 			$.ajax({
-				url: '/src/controller/UsuarioController.php?action=esqueciS',
+				url: '/src/controller/usuarioController.php?action=esqueciS',
 
 			}).done(function(dados) {
 

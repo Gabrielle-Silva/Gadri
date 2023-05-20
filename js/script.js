@@ -69,12 +69,23 @@ function loadCalendar() {
 				wd = 'Úteis';
 			}
 			$('#dia').html(wd + '<br>' + info.dateStr + ' - horarios:');
-			$('.' + wd).css('display', 'inline-block');
-			$(`label.active:not(".${wd}")`).css('display', 'none');
+			$('.' + wd).css('display', 'inline-block');	
+			$(`label.btn:not(".${wd}")`).css('display', 'none');
 		},
+		viewRender: function (view, element)
+    {
+        var minDate = new Date();
+        if (view.start <= minDate) {
+            $('.fc-button-prev').addClass("fc-state-disabled");
+        }
+        else {
+            $('.fc-button-prev').removeClass("fc-state-disabled");
+        }
+    },
 	});
 	calendar.setOption('locale', 'pt-br');
 	calendar.render();
+	$('#calendar').fullCalendar('render');
 	//console.log('teste1');
 }
 //CONFIGURAÇÃO CARROSSEL
@@ -94,6 +105,8 @@ new Glide('.glide', {
 		},
 	},
 }).mount();
+
+
 
 /* if (document.readyState !== 'complete') {
 	document.addEventListener('DOMContentLoaded', loadCalendar);

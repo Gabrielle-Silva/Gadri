@@ -144,6 +144,7 @@ switch ($action) {
                     $mail->AltBody = strip_tags($texto);
                     // Enviar
                     $mail->send();
+
                     $msgResultPositive = 'Agendamento realizado com sucesso!! Verifique seu email';
 
                     /* $msgResultPositive = 'A mensagem foi enviada!'; */
@@ -156,7 +157,8 @@ switch ($action) {
         } else {
             $msgResultNegative = 'Verifique os campos';
         }
-        include_once(__ABS_DIR__ . 'src/view/shared/modalConfirm.php');
+        include_once(__ABS_DIR__ . 'src/view/imovel/imoveisList.php');
+        include_once(__ABS_DIR__ . 'src/view/Shared/modalConfirm.php');
         break;
 
 
@@ -188,6 +190,7 @@ switch ($action) {
     case 'listar':
 
         $arrAgendamento = $objAgendamento->readAgendamento();
+
         require_once(__ABS_DIR__ . 'src/view/agendamento/agendamentosList.php');
 
         break;

@@ -455,6 +455,13 @@ class imovelModel
             if (empty($_SESSION['perfil']) || ($_SESSION['perfil'] != 'a')) {
                 $sql .= " and desativacao is null";
             }
+            if ($this->bairro) {
+                $sql .= " and bairro like" . $this->bairro;
+            }
+            if ($this->tipo) {
+                $sql .= " and tipo =" . $this->tipo;
+            }
+
             $resultImoveis = mysqli_query($conexao, $sql);
             return mysqli_fetch_all($resultImoveis);
         } catch (\Throwable $th) {

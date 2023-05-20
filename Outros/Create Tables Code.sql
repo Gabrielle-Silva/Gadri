@@ -141,7 +141,7 @@ ALTER TABLE agendamento ADD CONSTRAINT fk_agendamento_imovel
 	FOREIGN KEY (cod_imovel)
 	REFERENCES imovel(cod);
     
-
+insert into empresa (nome) values ('Gadri Imóveis');    
 
 
  create view view_agendamento as

@@ -69,6 +69,17 @@
             }
         },
 
+        filtrar: function() {
+
+            $.ajax({
+                'url': '/src/Controller/imovelController.php?action=listar',
+                'data': $(`#filtros`).serialize(),
+
+            }).done(function(dados) {
+                $('#layoutSidenav_content').html(dados);
+
+            });
+        },
         inserirImovel: function() {
 
             $.ajax({

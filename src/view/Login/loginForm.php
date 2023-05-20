@@ -9,7 +9,7 @@
 						</div>
 
 						<div class="card-body">
-							<form method="POST" id="loginForm" enctype="multipart/form-data" action="/src/Controller/UsuarioController.php">
+							<form method="POST" id="loginForm" enctype="multipart/form-data" action="/src/Controller/usuarioController.php">
 								<!-- =================== ALERT=================-->
 								<?php include_once(__ABS_DIR__ . 'src/view/Shared/alert.php'); ?>
 

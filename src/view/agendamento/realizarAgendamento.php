@@ -28,12 +28,13 @@
                         } ?>
                         <input class="form-control" name="action" id="action" type="hidden" value="inserirAgendamento" />
                         <input class="form-control" name="cod_imovel" id="cod_imovel" type="hidden" value="" />
-                        <input class="form-control" name="cod_usuario" id="cod_usuario" type="hidden" value="<?= $_SESSION["login"] ?>" />
                         <input class="form-control" name="data" id="data" type="hidden" value="" />
                         <input class="form-control" name="cod_horario" id="cod_horario" type="hidden" value="" />
 
 
-
+                        <!-- =================== MODAL =================-->
+                        <?php include_once(__ABS_DIR__ . 'src/view/shared/modalConfirm.php');
+                        ?>
                         <!-- CALENDARIO -->
                         <div class="col align-self-center col-agendamento">
                             <div id='calendar' style="overflow: auto; height: auto"></div>
@@ -97,7 +98,7 @@
             </div>
             <div class=" modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="agendamentoJs.inserirAgendamento()" data-bs-dismiss="modal">Agendar</button>
+                <button type="button" class="btn btn-primary" onclick="agendamentoJs.inserirAgendamento();" data-bs-dismiss="modal">Agendar</button>
             </div>
 
         </div>

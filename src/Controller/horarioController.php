@@ -54,9 +54,10 @@ switch ($action) {
 
 
     case 'listar':
-
-
         $arrHorario = $objHorario->readHorario();
+        /* $objAgendamento = new agendamentoModel();
+        $arrAgendamento = $objAgendamento->readAgendamento(); */
+
         require_once(__ABS_DIR__ . 'src/view/ferramentas/horarioList.php');
         break;
 
